@@ -44,11 +44,11 @@ dotnet run
 Ardından tarayıcınızda `https://localhost:5001` adresini açabilirsiniz.
 
 ## 📸 Ekran Görüntüleri
-> **[Buraya bazı ekran görüntüleri ekleyebilirsiniz]**
+> **[Eklenecek]**
 
 ## 📝 Geliştirici
 - **Ahmet Emre Arı** - [Web Sitesi](https://aemreari.com.tr)
-- 📧 İletişim: [info@aemreari.com](mailto:info@aemreari.com.tr)
+- 📧 İletişim: [info@aemreari.com.tr](mailto:info@aemreari.com.tr)
 
 ## 🎯 Lisans
 Bu proje **MIT Lisansı** altında sunulmaktadır. Dilediğiniz gibi kullanabilirsiniz.
