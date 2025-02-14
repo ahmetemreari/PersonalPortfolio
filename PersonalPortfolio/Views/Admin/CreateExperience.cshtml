@@ -1,0 +1,172 @@
+@model PersonalPortfolio.Models.Experience
+@{
+    ViewData["Title"] = "Yeni Deneyim";
+    Layout = "_AdminLayout";
+}
+
+<div class="max-w-4xl mx-auto">
+    <!-- Başlık Alanı -->
+    <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center gap-3">
+            <div class="bg-primary/10 p-3 rounded-lg">
+                <i class="fas fa-briefcase text-primary text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold">Yeni Deneyim Ekle</h2>
+                <p class="text-gray-500 text-sm">İş deneyiminizi eklemek için formu doldurun</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Kartı -->
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <form asp-action="CreateExperience" method="post" class="space-y-6">
+                <!-- Şirket Adı -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text font-semibold">Şirket Adı</span>
+                    </label>
+                    <label class="input-group">
+                        <span class="bg-base-200">
+                            <i class="fas fa-building"></i>
+                        </span>
+                        <input type="text" asp-for="CompanyName" 
+                               placeholder="Çalıştığınız şirketin adını girin" 
+                               class="input input-bordered w-full focus:input-primary" />
+                    </label>
+                    <label class="label">
+                        <span asp-validation-for="CompanyName" class="label-text-alt text-error"></span>
+                    </label>
+                </div>
+
+                <!-- Pozisyon -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text font-semibold">Pozisyon</span>
+                    </label>
+                    <label class="input-group">
+                        <span class="bg-base-200">
+                            <i class="fas fa-user-tie"></i>
+                        </span>
+                        <input type="text" asp-for="JobTitle" 
+                               placeholder="Görev pozisyonunuzu girin" 
+                               class="input input-bordered w-full focus:input-primary" />
+                    </label>
+                    <label class="label">
+                        <span asp-validation-for="JobTitle" class="label-text-alt text-error"></span>
+                    </label>
+                </div>
+
+                <!-- İş Tanımı -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text font-semibold">İş Tanımı</span>
+                    </label>
+                    <textarea asp-for="JobDescription" 
+                              class="textarea textarea-bordered h-32 focus:textarea-primary" 
+                              placeholder="İş sorumluluklarınızı ve başarılarınızı detaylı bir şekilde açıklayın"></textarea>
+                    <label class="label">
+                        <span asp-validation-for="JobDescription" class="label-text-alt text-error"></span>
+                    </label>
+                </div>
+
+                <!-- Tarihler -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="form-control w-full">
+                        <label class="label">
+                            <span class="label-text font-semibold">Başlangıç Tarihi</span>
+                        </label>
+                        <label class="input-group">
+                            <span class="bg-base-200">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                            <input type="date" asp-for="JobStartDate" 
+                                   class="input input-bordered w-full focus:input-primary" />
+                        </label>
+                        <label class="label">
+                            <span asp-validation-for="JobStartDate" class="label-text-alt text-error"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-control w-full">
+                        <label class="label">
+                            <span class="label-text font-semibold">Bitiş Tarihi</span>
+                        </label>
+                        <label class="input-group">
+                            <span class="bg-base-200">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                            <input type="date" asp-for="JobEndDate" 
+                                   class="input input-bordered w-full focus:input-primary" />
+                        </label>
+                        <label class="label">
+                            <span asp-validation-for="JobEndDate" class="label-text-alt text-error"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Şirket Logosu -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text font-semibold">Şirket Logosu URL</span>
+                    </label>
+                    <label class="input-group">
+                        <span class="bg-base-200">
+                            <i class="fas fa-image"></i>
+                        </span>
+                        <input type="text" asp-for="JobImageUrl" 
+                               placeholder="Logo URL'sini girin" 
+                               class="input input-bordered w-full focus:input-primary" />
+                    </label>
+                    <label class="label">
+                        <span asp-validation-for="JobImageUrl" class="label-text-alt text-error"></span>
+                        <span class="label-text-alt">Örn: https://sirket.com/logo.png</span>
+                    </label>
+                </div>
+
+                <!-- Aktif/Pasif -->
+                <div class="form-control">
+                    <label class="label cursor-pointer justify-start gap-4">
+                        <input type="checkbox" asp-for="IsActive" 
+                               class="toggle toggle-primary" checked />
+                        <span class="label-text font-semibold">Aktif</span>
+                    </label>
+                    <label class="label">
+                        <span asp-validation-for="IsActive" class="label-text-alt text-error"></span>
+                    </label>
+                </div>
+
+                <!-- Butonlar -->
+                <div class="flex gap-4 pt-4">
+                    <a asp-action="Experiences" 
+                       class="btn btn-ghost flex-1">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Geri Dön
+                    </a>
+                    <button type="submit" class="btn btn-primary flex-1">
+                        <i class="fas fa-plus mr-2"></i>
+                        Deneyim Ekle
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function() {
+            $('#JobEndDate').change(function() {
+                var startDate = new Date($('#JobStartDate').val());
+                var endDate = new Date($(this).val());
+                
+                if (endDate < startDate) {
+                    alert('Bitiş tarihi başlangıç tarihinden önce olamaz!');
+                    $(this).val('');
+                }
+            });
+        });
+    </script>
+}

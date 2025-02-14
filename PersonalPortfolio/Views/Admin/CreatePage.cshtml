@@ -1,0 +1,71 @@
+@model PersonalPortfolio.Models.Pages
+
+@{
+    ViewData["Title"] = "Yeni Sayfa Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mx-auto px-6 py-8">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-bold text-gray-800">
+            <i class="fas fa-file-alt text-primary"></i> Yeni Sayfa Ekle
+        </h2>
+        <a asp-controller="Admin" asp-action="Page" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Geri Dön
+        </a>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-lg p-6">
+        <form asp-action="CreatePage" method="post">
+            <div class="mb-4">
+                <label class="block text-lg font-medium text-gray-700">Sayfa Başlığı</label>
+                <input asp-for="PageTitle" class="input input-bordered w-full" required placeholder="Örn: Hakkımızda" />
+                <span asp-validation-for="PageTitle" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-lg font-medium text-gray-700">Sayfa Slug (URL)</label>
+                <input asp-for="PageSlug" class="input input-bordered w-full" required placeholder="örn: hakkimizda, iletisim" />
+                <span asp-validation-for="PageSlug" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-lg font-medium text-gray-700">İçerik</label>
+                <textarea asp-for="PageContent" class="textarea textarea-bordered w-full" rows="5" placeholder="Sayfa içeriğini buraya yazın..."></textarea>
+                <span asp-validation-for="PageContent" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-lg font-medium text-gray-700">Durum</label>
+                <select asp-for="IsActive" class="select select-bordered w-full">
+                    <option value="true">Aktif</option>
+                    <option value="false">Pasif</option>
+                </select>
+            </div>
+
+            <div class="flex justify-end gap-2">
+                <a asp-action="Pages" class="btn btn-outline">İptal</a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Kaydet
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const pageTitleInput = document.querySelector("[name='PageTitle']");
+            const pageSlugInput = document.querySelector("[name='PageSlug']");
+
+            pageTitleInput.addEventListener("input", function () {
+                let slug = pageTitleInput.value.toLowerCase()
+                    .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
+                    .replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
+                    .replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+                pageSlugInput.value = slug;
+            });
+        });
+    </script>
+}

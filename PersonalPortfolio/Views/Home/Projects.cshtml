@@ -1,0 +1,46 @@
+@model IEnumerable<PersonalPortfolio.Models.Projects>
+
+@{
+    ViewData["Title"] = "Projeler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="py-24 bg-base-100">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-primary mb-4">Projelerim</h1>
+            <p class="text-base-content/70 max-w-2xl mx-auto">Tamamladığım bazı projeler</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach (var project in Model)
+            {
+                <div class="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <figure class="px-4 pt-4">
+                        <img src="@project.ProjectImageUrl" alt="@project.ProjectTitle" 
+                             class="rounded-xl h-48 w-full object-cover">
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title">@project.ProjectTitle</h2>
+                        <p class="text-base-content/70">@project.ProjectDescription</p>
+                        <div class="card-actions justify-end mt-4">
+                            @if (!string.IsNullOrEmpty(project.ProjectGithubUrl))
+                            {
+                                <a href="@project.ProjectGithubUrl" target="_blank" class="btn btn-ghost btn-sm">
+                                    <i class="fab fa-github text-lg"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                            {
+                                <a href="@project.ProjectUrl" target="_blank" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Demo
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

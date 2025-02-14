@@ -1,0 +1,145 @@
+@model IEnumerable<PersonalPortfolio.Models.Contact>
+@{
+    ViewData["Title"] = "Mesajlar";
+    Layout = "_AdminLayout";
+}
+
+<div class="container mx-auto p-6">
+    <!-- Başlık ve Özet -->
+    <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center gap-3">
+            <div class="bg-primary/10 p-3 rounded-lg">
+                <i class="fas fa-envelope text-primary text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold">İletişim Mesajları</h2>
+                <p class="text-gray-500 text-sm">
+                    Toplam @Model.Count() mesaj | 
+                    @Model.Count(x => !x.IsRead) okunmamış
+                </p>
+            </div>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success mb-6">
+            <i class="fas fa-check-circle"></i>
+            <span>@TempData["Success"]</span>
+        </div>
+    }
+
+    <!-- Mesaj Listesi -->
+    <div class="grid gap-4">
+        @foreach (var message in Model.OrderByDescending(x => x.CreatedDate))
+        {
+            <div class="card bg-base-100 hover:shadow-lg transition-shadow">
+                <div class="card-body p-6">
+                    <div class="flex items-start justify-between gap-4">
+                        <!-- Sol Taraf - Mesaj Bilgileri -->
+                        <div class="flex-grow">
+                            <div class="flex items-center gap-3 mb-2">
+                                <h3 class="font-bold text-lg">@message.Name</h3>
+                                @if (!message.IsRead)
+                                {
+                                    <span class="badge badge-primary badge-sm">Yeni</span>
+                                }
+                            </div>
+                            <p class="text-gray-500 text-sm mb-2">
+                                <i class="fas fa-envelope-open mr-2"></i>@message.Email
+                            </p>
+                            <h4 class="font-medium mb-2">@message.Subject</h4>
+                            <p class="text-gray-600">@message.Message</p>
+                            <div class="flex items-center gap-4 mt-4 text-sm text-gray-500">
+                                <span>
+                                    <i class="fas fa-clock mr-1"></i>
+                                    @message.CreatedDate.ToString("dd.MM.yyyy HH:mm")
+                                </span>
+                                @if (message.IsRead)
+                                {
+                                    <span class="text-success">
+                                        <i class="fas fa-check-circle mr-1"></i>
+                                        Okundu
+                                    </span>
+                                }
+                            </div>
+                        </div>
+
+                        <!-- Sağ Taraf - Aksiyonlar -->
+                        <div class="flex flex-col gap-2">
+                            @if (!message.IsRead)
+                            {
+                                <form asp-action="MarkAsRead" asp-route-id="@message.Id" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-ghost btn-sm">
+                                        <i class="fas fa-check text-success"></i>
+                                    </button>
+                                </form>
+                            }
+                            <!-- E-posta Gönder Butonu -->
+                            <a href="mailto:@message.Email" class="btn btn-ghost btn-sm">
+                                <i class="fas fa-reply text-primary"></i>
+                            </a>
+                            <!-- Silme Butonu -->
+                            <button onclick="confirmDelete(@message.Id)" class="btn btn-ghost btn-sm">
+                                <i class="fas fa-trash text-error"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (!Model.Any())
+        {
+            <div class="text-center py-12">
+                <div class="bg-base-200 inline-flex p-6 rounded-full mb-4">
+                    <i class="fas fa-inbox text-5xl text-base-content/40"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Henüz Mesaj Yok</h3>
+                <p class="text-base-content/60">
+                    İletişim formundan gönderilen mesajlar burada listelenecek.
+                </p>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Silme Onay Modalı -->
+<dialog id="deleteModal" class="modal">
+    <div class="modal-box">
+        <h3 class="font-bold text-lg mb-2">Mesajı Sil</h3>
+        <p class="py-4 text-base-content/70">Bu mesajı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.</p>
+        <div class="modal-action">
+            <form asp-action="DeleteMessage" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" id="messageIdToDelete" name="id" value="" />
+                <div class="flex gap-2">
+                    <button type="button" class="btn btn-ghost" onclick="closeModal()">İptal</button>
+                    <button type="submit" class="btn btn-error">
+                        <i class="fas fa-trash mr-2"></i>
+                        Sil
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>İptal</button>
+    </form>
+</dialog>
+
+@section Scripts {
+    <script>
+        function confirmDelete(id) {
+            const modal = document.getElementById('deleteModal');
+            document.getElementById('messageIdToDelete').value = id;
+            modal.showModal();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('deleteModal');
+            modal.close();
+        }
+    </script>
+}

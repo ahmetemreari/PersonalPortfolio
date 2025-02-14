@@ -1,0 +1,118 @@
+@model PersonalPortfolio.Models.Service
+@{
+    ViewData["Title"] = "Create Service";
+    Layout = "_AdminLayout";
+}
+
+<div class="max-w-4xl mx-auto">
+    <!-- Başlık Alanı -->
+    <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center gap-3">
+            <div class="bg-primary/10 p-3 rounded-lg">
+                <i class="fas fa-plus text-primary text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold">Yeni Servis Oluştur</h2>
+                <p class="text-gray-500 text-sm">Yeni bir servis eklemek için formu doldurun</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Kartı -->
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <form asp-action="CreateService" method="post" class="space-y-6">
+                <!-- Servis Adı -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text font-semibold">Servis Adı</span>
+                    </label>
+                    <input type="text" asp-for="Name" 
+                           placeholder="Servis adını girin" 
+                           class="input input-bordered w-full focus:input-primary" />
+                    <label class="label">
+                        <span asp-validation-for="Name" class="label-text-alt text-error"></span>
+                    </label>
+                </div>
+
+                <!-- Fiyat -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text font-semibold">Fiyat</span>
+                    </label>
+                    <label class="input-group">
+                        <span class="bg-base-200 font-semibold">₺</span>
+                        <input type="number" asp-for="Price" 
+                               step="0.01" 
+                               placeholder="0.00" 
+                               class="input input-bordered w-full focus:input-primary" />
+                    </label>
+                    <label class="label">
+                        <span asp-validation-for="Price" class="label-text-alt text-error"></span>
+                    </label>
+                </div>
+
+                <!-- Açıklama -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text font-semibold">Açıklama</span>
+                    </label>
+                    <textarea asp-for="Description" 
+                              class="textarea textarea-bordered h-32 focus:textarea-primary" 
+                              placeholder="Servis açıklamasını girin"></textarea>
+                    <label class="label">
+                        <span asp-validation-for="Description" class="label-text-alt text-error"></span>
+                    </label>
+                </div>
+
+                <!-- İkon -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text font-semibold">İkon</span>
+                    </label>
+                    <label class="input-group">
+                        <span class="bg-base-200">
+                            <i class="fas fa-icons"></i>
+                        </span>
+                        <input type="text" asp-for="Icon" 
+                               placeholder="Icon URL veya sınıfı girin" 
+                               class="input input-bordered w-full focus:input-primary" />
+                    </label>
+                    <label class="label">
+                        <span asp-validation-for="Icon" class="label-text-alt text-error"></span>
+                        <span class="label-text-alt">Örn: fas fa-home</span>
+                    </label>
+                </div>
+
+                <!-- Aktif/Pasif -->
+                <div class="form-control">
+                    <label class="label cursor-pointer justify-start gap-4">
+                        <input type="checkbox" asp-for="IsActive" 
+                               class="toggle toggle-primary" />
+                        <span class="label-text font-semibold">Aktif</span>
+                    </label>
+                    <label class="label">
+                        <span asp-validation-for="IsActive" class="label-text-alt text-error"></span>
+                    </label>
+                </div>
+
+                <!-- Butonlar -->
+                <div class="flex gap-4 pt-4">
+                    <a href="javascript:history.back()" 
+                       class="btn btn-ghost flex-1">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Geri Dön
+                    </a>
+                    <button type="submit" class="btn btn-primary flex-1">
+                        <i class="fas fa-plus mr-2"></i>
+                        Servis Oluştur
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

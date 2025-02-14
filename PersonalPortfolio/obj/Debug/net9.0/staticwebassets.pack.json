@@ -1,0 +1,317 @@
+{
+  "Files": [
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\PersonalPortfolio.bundle.scp.css",
+      "PackagePath": "staticwebassets\\PersonalPortfolio.0yf5fwrf86.bundle.scp.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\images\\IMG_0470254153250.PNG",
+      "PackagePath": "staticwebassets\\images\\IMG_0470254153250.PNG"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\images\\slider\\slider1.PNG",
+      "PackagePath": "staticwebassets\\images\\slider\\slider1.PNG"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\uploads\\aboutprofile.PNG",
+      "PackagePath": "staticwebassets\\uploads\\aboutprofile.PNG"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\uploads\\sliders\\56d81d35-6156-4404-b410-1d9246e7641a.png",
+      "PackagePath": "staticwebassets\\uploads\\sliders\\56d81d35-6156-4404-b410-1d9246e7641a.png"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\uploads\\sliders\\64b9c2ed-8396-407c-8a7e-824bcc3b996f.png",
+      "PackagePath": "staticwebassets\\uploads\\sliders\\64b9c2ed-8396-407c-8a7e-824bcc3b996f.png"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\uploads\\sliders\\e40c655d-59f6-45df-a2ce-6fba447604a1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\sliders\\e40c655d-59f6-45df-a2ce-6fba447604a1.jpg"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\uploads\\sliders\\e6d12cdf-cc7e-461e-9433-59d9301153fe.jpg",
+      "PackagePath": "staticwebassets\\uploads\\sliders\\e6d12cdf-cc7e-461e-9433-59d9301153fe.jpg"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\uploads\\sliders\\e6eddb1b-8e6f-480a-add6-b2ca844da43c.PNG",
+      "PackagePath": "staticwebassets\\uploads\\sliders\\e6eddb1b-8e6f-480a-add6-b2ca844da43c.PNG"
+    },
+    {
+      "Id": "c:\\Users\\ahmet\\OneDrive\\Masaüstü\\Projeler\\PersonalPortfolio\\PersonalPortfolio\\wwwroot\\uploads\\sliders\\f9242e5e-87c9-4e65-9d1f-4657dde24378.PNG",
+      "PackagePath": "staticwebassets\\uploads\\sliders\\f9242e5e-87c9-4e65-9d1f-4657dde24378.PNG"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.PersonalPortfolio.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.PersonalPortfolio.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.PersonalPortfolio.props",
+      "PackagePath": "build\\PersonalPortfolio.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.PersonalPortfolio.props",
+      "PackagePath": "buildMultiTargeting\\PersonalPortfolio.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.PersonalPortfolio.props",
+      "PackagePath": "buildTransitive\\PersonalPortfolio.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

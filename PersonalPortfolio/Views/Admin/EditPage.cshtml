@@ -1,0 +1,46 @@
+@model PersonalPortfolio.Models.Pages
+
+@{
+    ViewData["Title"] = "Sayfa Düzenle";
+    Layout = "_AdminLayout";
+}
+
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold text-primary mb-6">
+        <i class="fas fa-file-alt mr-2"></i>Sayfa Düzenle
+    </h2>
+
+    <div class="card bg-base-100 shadow-lg p-6">
+        <form asp-action="EditPage" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Sayfa Başlığı</label>
+                <input asp-for="PageTitle" class="input input-bordered w-full" required />
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Sayfa Slug (URL)</label>
+                <input asp-for="PageSlug" class="input input-bordered w-full" required />
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">İçerik</label>
+                <textarea asp-for="PageContent" class="textarea textarea-bordered w-full" rows="5"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Durum</label>
+                <select asp-for="IsActive" class="select select-bordered w-full">
+                    <option value="true">Aktif</option>
+                    <option value="false">Pasif</option>
+                </select>
+            </div>
+
+            <div class="flex justify-end gap-2">
+                <a asp-action="Index" class="btn btn-ghost">İptal</a>
+                <button type="submit" class="btn btn-primary">Güncelle</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+@model IEnumerable<PersonalPortfolio.Models.Projects>
+
+@{
+    ViewData["Title"] = "Projeler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mx-auto px-4 py-8">
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-primary">
+                    <i class="fas fa-project-diagram mr-2"></i>Projeler
+                </h2>
+                
+                <div class="flex items-center gap-4">
+                    <!-- Proje Filtre Butonları -->
+                    <div class="btn-group">
+                        <button class="btn btn-sm filter-btn btn-primary" data-filter="all">
+                            Tümü
+                        </button>
+                        <button class="btn btn-sm filter-btn btn-outline-primary" data-filter="active">
+                            Aktif
+                        </button>
+                        <button class="btn btn-sm filter-btn btn-outline-primary" data-filter="passive">
+                            Pasif
+                        </button>
+                    </div>
+
+                    <!-- Yeni Proje Ekle Butonu -->
+                    <a asp-action="CreateProject" class="btn btn-primary btn-sm">
+                        <i class="fas fa-plus mr-2"></i>Yeni Proje
+                    </a>
+                </div>
+            </div>
+
+            <!-- Proje Kartları -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach (var item in Model)
+                {
+                    <div class="project-card" data-status="@(item.IsActive ? "active" : "passive")">
+                        <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                            <!-- Proje Görseli -->
+                            <figure class="relative">
+                                @if (!string.IsNullOrEmpty(item.ProjectImageUrl))
+                                {
+                                    <img src="@item.ProjectImageUrl" 
+                                         alt="@item.ProjectTitle" 
+                                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+                                }
+                                
+                                <!-- Aktiflik Etiketi -->
+                                <div class="absolute top-4 right-4">
+                                    @if (item.IsActive)
+                                    {
+                                        <span class="badge badge-success">Aktif</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-error">Pasif</span>
+                                    }
+                                </div>
+                            </figure>
+
+                            <!-- Proje İçeriği -->
+                            <div class="card-body">
+                                <h3 class="card-title text-lg font-bold">@item.ProjectTitle</h3>
+                                <p class="text-base-content/70 line-clamp-3">@item.ProjectDescription</p>
+                                
+                                <!-- Proje Bağlantıları -->
+                                <div class="card-actions justify-between mt-4">
+                                    <div class="btn-group">
+                                        @if (!string.IsNullOrEmpty(item.ProjectUrl))
+                                        {
+                                            <a href="@item.ProjectUrl" target="_blank" class="btn btn-sm btn-ghost" title="Demo">
+                                                <i class="fas fa-link"></i>
+                                            </a>
+                                        }
+                                        @if (!string.IsNullOrEmpty(item.ProjectGithubUrl))
+                                        {
+                                            <a href="@item.ProjectGithubUrl" target="_blank" class="btn btn-sm btn-ghost" title="Github">
+                                                <i class="fab fa-github"></i>
+                                            </a>
+                                        }
+                                    </div>
+                                    
+                                    <!-- Düzenleme ve Silme Butonları -->
+                                    <div class="btn-group">
+                                        <a asp-action="EditProject" asp-route-id="@item.Id" class="btn btn-sm btn-primary" title="Düzenle">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a asp-action="DeleteProject" asp-route-id="@item.Id" class="btn btn-sm btn-error" title="Sil">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Proje Bulunamadı Mesajı -->
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info shadow-lg mt-6">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>Henüz hiç proje eklenmemiş.</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Aktif buton stilini değiştir
+                    filterButtons.forEach(btn => btn.classList.remove('btn-primary'));
+                    filterButtons.forEach(btn => btn.classList.add('btn-outline-primary'));
+                    this.classList.remove('btn-outline-primary');
+                    this.classList.add('btn-primary');
+
+                    // Filtreleme işlemi
+                    const filter = this.dataset.filter;
+                    projectCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = card.dataset.status === filter ? 'block' : 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}

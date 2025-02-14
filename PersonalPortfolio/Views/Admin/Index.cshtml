@@ -1,0 +1,123 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_AdminLayout";
+}
+
+<!-- İstatistikler -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="stats shadow">
+        <div class="stat">
+            <div class="stat-figure text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <div class="stat-title">Toplam Hizmet</div>
+            <div class="stat-value">@ViewBag.ServiceCount</div>
+        </div>
+    </div>
+    
+    <div class="stats shadow">
+        <div class="stat">
+            <div class="stat-figure text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+            </div>
+            <div class="stat-title">Yeni Mesajlar</div>
+            <div class="stat-value">@ViewBag.NewMessageCount</div>
+        </div>
+    </div>
+    
+    <div class="stats shadow">
+        <div class="stat">
+            <div class="stat-figure text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+            </div>
+            <div class="stat-title">Sosyal Medya Hesaplari</div>
+            <div class="stat-value">@ViewBag.SocialMediaCount</div>
+        </div>
+    </div>
+</div>
+
+<!-- Mesajlar ve Hızlı İşlemler -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <!-- Mesajlar Kartı -->
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">
+                <i class="fas fa-envelope mr-2 text-primary"></i>
+                Son Mesajlar
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="table w-full">
+                    <thead>
+                        <tr>
+                            <th>İsim</th>
+                            <th>Konu</th>
+                            <th>Tarih</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.LastMessages != null && ((List<Contact>)ViewBag.LastMessages).Any())
+                        {
+                            @foreach (var message in (List<Contact>)ViewBag.LastMessages)
+                            {
+                                <tr class="hover">
+                                    <td>@message.Name</td>
+                                    <td class="max-w-[200px] truncate">@message.Subject</td>
+                                    <td>@message.CreatedDate.ToString("dd.MM.yyyy")</td>
+                                    <td>
+                                        @if (!message.IsRead)
+                                        {
+                                            <span class="badge badge-primary badge-sm">Yeni</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-ghost badge-sm">Okundu</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" class="text-center text-gray-500">
+                                    Henüz mesaj bulunmuyor
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-actions justify-end mt-4">
+                <a asp-action="Messages" class="btn btn-primary btn-sm">
+                    <i class="fas fa-external-link-alt mr-2"></i>
+                    Tüm Mesajları Gör
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hızlı İşlemler Kartı -->
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">
+                <i class="fas fa-bolt mr-2 text-primary"></i>
+                Hızlı İşlemler
+            </h2>
+            <div class="flex flex-col gap-4">
+                <a asp-action="About" class="btn btn-primary">
+                    <i class="fas fa-user mr-2"></i>
+                    Hakkımda Düzenle
+                </a>
+                <a asp-action="CreateService" class="btn btn-secondary">
+                    <i class="fas fa-plus mr-2"></i>
+                    Yeni Hizmet Ekle
+                </a>
+                <a asp-action="Messages" class="btn">
+                    <i class="fas fa-envelope mr-2"></i>
+                    Mesajları Görüntüle
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

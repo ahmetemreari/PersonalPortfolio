@@ -1,0 +1,62 @@
+@model PersonalPortfolio.Models.Projects
+
+@{
+    ViewData["Title"] = "Proje Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Proje Silme Onayı</h6>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Dikkat!</h4>
+                <p>Aşağıdaki proje kaydını silmek üzeresiniz. Bu işlem geri alınamaz.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">Proje Adı</dt>
+                        <dd class="col-sm-8">@Model.ProjectTitle</dd>
+
+                        <dt class="col-sm-4">Açıklama</dt>
+                        <dd class="col-sm-8">@Model.ProjectDescription</dd>
+
+                        <dt class="col-sm-4">Proje URL</dt>
+                        <dd class="col-sm-8">
+                            @if (!string.IsNullOrEmpty(Model.ProjectUrl))
+                            {
+                                <a href="@Model.ProjectUrl" target="_blank">@Model.ProjectUrl</a>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">Github URL</dt>
+                        <dd class="col-sm-8">
+                            @if (!string.IsNullOrEmpty(Model.ProjectGithubUrl))
+                            {
+                                <a href="@Model.ProjectGithubUrl" target="_blank">@Model.ProjectGithubUrl</a>
+                            }
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    @if (!string.IsNullOrEmpty(Model.ProjectImageUrl))
+                    {
+                        <img src="@Model.ProjectImageUrl" alt="@Model.ProjectTitle" class="img-fluid" />
+                    }
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <form asp-action="DeleteProject">
+                    <input type="hidden" asp-for="Id" />
+                    <a asp-action="Projects" class="btn btn-secondary">İptal</a>
+                    <input type="submit" value="Sil" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

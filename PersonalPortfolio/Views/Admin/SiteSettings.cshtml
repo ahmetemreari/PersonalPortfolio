@@ -1,0 +1,122 @@
+@model SiteSettings
+
+@{
+    ViewData["Title"] = "siteSettings";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mx-auto p-6">
+    <form asp-action="SiteSettings" method="post" enctype="multipart/form-data">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Genel Ayarlar -->
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">Genel Ayarlar</h2>
+                    
+                    <div class="form-control">
+                        <label asp-for="SiteTitle" class="label">Site Başlığı</label>
+                        <input asp-for="SiteTitle" class="input input-bordered" />
+                        <span asp-validation-for="SiteTitle" class="text-error"></span>
+                    </div>
+
+                    <div class="form-control">
+                        <label asp-for="SiteLogoText" class="label">Logo Yazısı</label>
+                        <input asp-for="SiteLogoText" class="input input-bordered" />
+                        <span asp-validation-for="SiteLogoText" class="text-error"></span>
+                    </div>
+
+                       <div class="form-control">
+                        <label asp-for="SiteDescription" class="label">Site Açıklaması</label>
+                        <textarea asp-for="SiteDescription" class="textarea textarea-bordered"></textarea>
+                        <span asp-validation-for="SiteDescription" class="text-error"></span>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            
+
+            <!-- Sosyal Medya -->
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">Sosyal Medya</h2>
+                    
+                    <div class="form-control">
+                        <label asp-for="FacebookUrl" class="label">Facebook URL</label>
+                        <input asp-for="FacebookUrl" class="input input-bordered" />
+                    </div>
+
+                    <div class="form-control">
+                        <label asp-for="TwitterUrl" class="label">Twitter URL</label>
+                        <input asp-for="TwitterUrl" class="input input-bordered" />
+                    </div>
+
+                    <div class="form-control">
+                        <label asp-for="InstagramUrl" class="label">Instagram URL</label>
+                        <input asp-for="InstagramUrl" class="input input-bordered" />
+                    </div>
+
+                    <div class="form-control">
+                        <label asp-for="LinkedInUrl" class="label">LinkedIn URL</label>
+                        <input asp-for="LinkedInUrl" class="input input-bordered" />
+                    </div>
+
+                    <div class="form-control">
+                        <label asp-for="GithubUrl" class="label">Github URL</label>
+                        <input asp-for="GithubUrl" class="input input-bordered" />
+                    </div>
+
+                    <div class="form-control">
+                        <label asp-for="YoutubeUrl" class="label">Youtube URL</label>
+                        <input asp-for="YoutubeUrl" class="input input-bordered" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Ayarları -->
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">Footer Ayarları</h2>
+                    
+                    <div class="form-control">
+                        <label asp-for="CopyRightText" class="label">Telif Hakkı Metni</label>
+                        <input asp-for="CopyRightText" class="input input-bordered" />
+                    </div>
+
+                    <div class="form-control">
+                        <label asp-for="FooterDescription" class="label">Footer Açıklaması</label>
+                        <textarea asp-for="FooterDescription" class="textarea textarea-bordered"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CV ve Portföy -->
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">CV ve Portföy</h2>
+                    
+                    <div class="form-control">
+                        <label asp-for="CvUrl" class="label">CV URL</label>
+                        <input asp-for="CvUrl" class="input input-bordered" />
+                    </div>
+
+                    <div class="form-control">
+                        <label asp-for="PortfolioEmail" class="label">Portföy E-posta</label>
+                        <input asp-for="PortfolioEmail" class="input input-bordered" />
+                    </div>
+
+                    <div class="form-control">
+                        <label asp-for="PortfolioPhone" class="label">Portföy Telefon</label>
+                        <input asp-for="PortfolioPhone" class="input input-bordered" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 text-center">
+            <button type="submit" class="btn btn-primary">Ayarları Kaydet</button>
+        </div>
+    </form>
+</div>

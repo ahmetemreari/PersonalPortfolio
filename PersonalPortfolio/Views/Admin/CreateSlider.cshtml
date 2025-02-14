@@ -1,0 +1,154 @@
+@model PersonalPortfolio.Models.Sliders
+@{
+ViewData["Title"] = "Yeni Slider Oluştur";
+Layout = "_AdminLayout";
+}
+<div class="max-w-4xl mx-auto">
+    <!-- Başlık Alanı -->
+    <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center gap-3">
+            <div class="bg-primary/10 p-3 rounded-lg">
+                <i class="fas fa-plus text-primary text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold">Yeni Slider Oluştur</h2>
+                <p class="text-gray-500 text-sm">Yeni bir slider için bilgileri doldurun</p>
+            </div>
+        </div>
+    </div>
+    <!-- Form Kartı -->
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <form asp-action="CreateSlider" method="post" class="space-y-6" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Resim Yükleme ve URL -->
+            <div class="form-control w-full">
+                <label class="label">
+                    <span class="label-text font-semibold">Slider Resmi</span>
+                </label>
+                
+                <div id="imagePreviewContainer" class="bg-base-200 rounded-xl overflow-hidden mb-4 hidden">
+                    <img id="imagePreview" 
+                         alt="Slider Önizleme" 
+                         class="w-full h-64 object-cover" />
+                </div>
+                
+                <div class="flex gap-4 items-center">
+                    <input type="file" 
+                           name="file" 
+                           id="fileInput" 
+                           class="file-input file-input-bordered file-input-primary w-full max-w-xs" 
+                           accept="image/*" />
+                    <span class="text-sm text-gray-500">veya</span>
+                    <input type="text" 
+                           asp-for="SliderUrl" 
+                           class="input input-bordered w-full focus:input-primary"
+                           placeholder="Resim URL'sini girin" />
+                </div>
+                <span asp-validation-for="SliderUrl" class="text-danger text-sm"></span>
+            </div>
+
+            <!-- Slider Başlığı -->
+            <div class="form-control w-full">
+                <label class="label">
+                    <span class="label-text font-semibold">Slider Başlığı</span>
+                </label>
+                <input type="text" asp-for="SliderTitle" 
+                       class="input input-bordered w-full focus:input-primary"
+                       placeholder="Slider başlığını girin" />
+                <span asp-validation-for="SliderTitle" class="text-danger text-sm"></span>
+            </div>
+
+            <!-- Slider Açıklaması -->
+            <div class="form-control w-full">
+                <label class="label">
+                    <span class="label-text font-semibold">Slider Açıklaması</span>
+                </label>
+                <textarea asp-for="SliderDescription" 
+                          class="textarea textarea-bordered w-full focus:textarea-primary"
+                          placeholder="Slider açıklamasını girin"
+                          rows="3"></textarea>
+                <span asp-validation-for="SliderDescription" class="text-danger text-sm"></span>
+            </div>
+
+            <!-- Buton Metni -->
+            <div class="form-control w-full">
+                <label class="label">
+                    <span class="label-text font-semibold">Buton Metni</span>
+                </label>
+                <input type="text" asp-for="SliderButtonText" 
+                       class="input input-bordered w-full focus:input-primary"
+                       placeholder="Buton metnini girin" />
+                <span asp-validation-for="SliderButtonText" class="text-danger text-sm"></span>
+            </div>
+
+            <!-- Buton URL -->
+            <div class="form-control w-full">
+                <label class="label">
+                    <span class="label-text font-semibold">Buton URL</span>
+                </label>
+                <input type="text" asp-for="SliderButtonUrl" 
+                       class="input input-bordered w-full focus:input-primary"
+                       placeholder="Buton URL'sini girin" />
+                <span asp-validation-for="SliderButtonUrl" class="text-danger text-sm"></span>
+            </div>
+
+            <!-- Aktif/Pasif -->
+            <div class="form-control">
+                <label class="label cursor-pointer">
+                    <span class="label-text font-semibold">Aktif Mi?</span>
+                    <input type="checkbox" asp-for="IsActive" class="toggle toggle-primary" />
+                </label>
+            </div>
+
+            <!-- Butonlar -->
+            <div class="flex gap-4 pt-4">
+                <a asp-action="Sliders" 
+                   class="btn btn-ghost flex-1">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Listeye Dön
+                </a>
+                <button type="submit" class="btn btn-primary flex-1">
+                    <i class="fas fa-save mr-2"></i>
+                    Slider Oluştur
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    // Dosya seçildiğinde ve URL değiştiğinde önizleme
+    const fileInput = document.getElementById('fileInput');
+    const urlInput = document.getElementById('SliderUrl');
+    const imagePreview = document.getElementById('imagePreview');
+    const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+
+    // Dosya seçildiğinde önizleme
+    fileInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreviewContainer.classList.remove('hidden');
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // URL değiştiğinde önizleme
+    urlInput.addEventListener('change', function() {
+        if (this.value) {
+            imagePreview.src = this.value;
+            imagePreviewContainer.classList.remove('hidden');
+        } else {
+            imagePreviewContainer.classList.add('hidden');
+        }
+    });
+</script>
+
+}

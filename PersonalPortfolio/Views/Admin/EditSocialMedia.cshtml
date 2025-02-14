@@ -1,0 +1,130 @@
+@model PersonalPortfolio.Models.SocialMedia
+@{
+    ViewData["Title"] = "Sosyal Medya Düzenle";
+    Layout = "_AdminLayout";
+}
+
+<div class="max-w-4xl mx-auto">
+    <!-- Başlık Alanı -->
+    <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center gap-3">
+            <div class="bg-primary/10 p-3 rounded-lg">
+                <i class="fas fa-edit text-primary text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold">Sosyal Medya Düzenle</h2>
+                <p class="text-gray-500 text-sm">@Model.Platform hesabınızın bilgilerini güncelleyin</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Kartı -->
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <form asp-action="EditSocialMedia" method="post" class="space-y-6">
+                <input type="hidden" asp-for="Id" />
+
+                <!-- Platform -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text font-semibold">Platform</span>
+                    </label>
+                    <select asp-for="Platform" class="select select-bordered w-full focus:select-primary">
+                        <option value="">Platform Seçin</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Twitter">Twitter</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="LinkedIn">LinkedIn</option>
+                        <option value="GitHub">GitHub</option>
+                        <option value="YouTube">YouTube</option>
+                    </select>
+                    <label class="label">
+                        <span asp-validation-for="Platform" class="label-text-alt text-error"></span>
+                    </label>
+                </div>
+
+                <!-- URL -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text font-semibold">Profil URL</span>
+                    </label>
+                    <div class="input-group">
+                        <span class="bg-base-200"><i class="fas fa-link"></i></span>
+                        <input type="url" asp-for="Url" 
+                               class="input input-bordered w-full focus:input-primary"
+                               placeholder="https://..." />
+                    </div>
+                    <label class="label">
+                        <span asp-validation-for="Url" class="label-text-alt text-error"></span>
+                        <span class="label-text-alt">Örn: https://twitter.com/username</span>
+                    </label>
+                </div>
+
+                <!-- İkon -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text font-semibold">İkon</span>
+                    </label>
+                    <div class="input-group">
+                        <span class="bg-base-200"><i class="fas fa-icons"></i></span>
+                        <input type="text" asp-for="Icon" 
+                               class="input input-bordered w-full focus:input-primary"
+                               placeholder="fab fa-twitter" />
+                    </div>
+                    <label class="label">
+                        <span asp-validation-for="Icon" class="label-text-alt text-error"></span>
+                        <span class="label-text-alt">Font Awesome ikon kodu (örn: fab fa-twitter)</span>
+                    </label>
+                </div>
+
+                <!-- Aktif/Pasif -->
+                <div class="form-control">
+                    <label class="label cursor-pointer justify-start gap-4">
+                        <input type="checkbox" asp-for="IsActive" 
+                               class="toggle toggle-primary" />
+                        <div>
+                            <span class="label-text font-semibold">Aktif</span>
+                            <p class="text-xs text-gray-500 mt-1">Hesabın görünürlüğünü kontrol eder</p>
+                        </div>
+                    </label>
+                    <label class="label">
+                        <span asp-validation-for="IsActive" class="label-text-alt text-error"></span>
+                    </label>
+                </div>
+
+                <!-- İkon Önizleme -->
+                <div class="bg-base-200 p-4 rounded-lg">
+                    <h3 class="font-semibold mb-2">İkon Önizleme</h3>
+                    <div class="flex items-center gap-4">
+                        <i id="iconPreview" class="@Model.Icon text-3xl"></i>
+                        <span class="text-sm text-gray-500">Seçilen ikonun önizlemesi</span>
+                    </div>
+                </div>
+
+                <!-- Butonlar -->
+                <div class="flex gap-4 pt-4">
+                    <a asp-action="SocialMedias" class="btn btn-ghost flex-1">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Listeye Dön
+                    </a>
+                    <button type="submit" class="btn btn-primary flex-1">
+                        <i class="fas fa-save mr-2"></i>
+                        Kaydet
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        // İkon önizleme
+        document.getElementById('Icon').addEventListener('input', function() {
+            const iconPreview = document.getElementById('iconPreview');
+            iconPreview.className = this.value + ' text-3xl';
+        });
+    </script>
+}

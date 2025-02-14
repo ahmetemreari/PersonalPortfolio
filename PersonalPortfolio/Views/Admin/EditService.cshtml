@@ -1,0 +1,125 @@
+@model PersonalPortfolio.Models.Service
+@{
+    ViewData["Title"] = "Servis Düzenle";
+    Layout = "_AdminLayout";
+}
+
+<div class="container mx-auto p-4">
+    <!-- Başlık Alanı -->
+    <div class="flex items-center gap-3 mb-6">
+        <div class="bg-blue-100 p-3 rounded-lg">
+            <i class="fas fa-edit text-blue-600 text-xl"></i>
+        </div>
+        <div>
+            <h2 class="text-2xl font-bold">Servis Düzenle</h2>
+            <p class="text-gray-500 text-sm">Servis bilgilerini güncelleyin</p>
+        </div>
+    </div>
+
+    <!-- Form Kartı -->
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <form asp-action="EditService" method="post">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="CreatedDate" />
+
+            <!-- Servis Adı -->
+            <div class="mb-6">
+                <label class="block text-sm font-semibold mb-2">Servis Adı</label>
+                <input type="text" asp-for="Name" 
+                       class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                       placeholder="Servis adını girin" />
+                <span asp-validation-for="Name" class="text-red-500 text-sm"></span>
+            </div>
+
+            <!-- Fiyat -->
+            <div class="mb-6">
+                <label class="block text-sm font-semibold mb-2">Fiyat</label>
+                <div class="flex">
+                    <span class="px-4 py-2 bg-gray-100 border border-r-0 rounded-l-lg">₺</span>
+                    <input type="number" asp-for="Price" 
+                           step="0.01"
+                           class="w-full px-4 py-2 border rounded-r-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                           placeholder="0.00" />
+                </div>
+                <span asp-validation-for="Price" class="text-red-500 text-sm"></span>
+            </div>
+
+            <!-- Açıklama -->
+            <div class="mb-6">
+                <label class="block text-sm font-semibold mb-2">Açıklama</label>
+                <textarea asp-for="Description" 
+                          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                          rows="4"
+                          placeholder="Servis açıklamasını girin"></textarea>
+                <span asp-validation-for="Description" class="text-red-500 text-sm"></span>
+            </div>
+
+            <!-- İkon -->
+            <div class="mb-6">
+                <label class="block text-sm font-semibold mb-2">
+                    İkon
+                    <span class="text-sm font-normal text-gray-500 ml-2">
+                        Mevcut İkon: <i class="@Model.Icon"></i>
+                    </span>
+                </label>
+                <div class="flex">
+                    <span class="px-4 py-2 bg-gray-100 border border-r-0 rounded-l-lg">
+                        <i class="fas fa-icons"></i>
+                    </span>
+                    <input type="text" asp-for="Icon" 
+                           class="w-full px-4 py-2 border rounded-r-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                           placeholder="Örn: fas fa-home" />
+                </div>
+                <span asp-validation-for="Icon" class="text-red-500 text-sm"></span>
+                <p class="text-sm text-gray-500 mt-1">Font Awesome ikon kodu girin (örn: fas fa-home)</p>
+            </div>
+
+            <!-- Aktif/Pasif -->
+            <div class="mb-6">
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" asp-for="IsActive" 
+                           class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+                    <span class="ml-2">
+                        <span class="font-semibold">Aktif</span>
+                        <p class="text-sm text-gray-500">Servisin görünürlüğünü kontrol eder</p>
+                    </span>
+                </label>
+                <span asp-validation-for="IsActive" class="text-red-500 text-sm block mt-1"></span>
+            </div>
+
+            <!-- İkon Önizleme -->
+            <div class="bg-gray-100 p-4 rounded-lg mb-6">
+                <h3 class="font-semibold mb-2">İkon Önizleme</h3>
+                <div class="flex items-center gap-4">
+                    <i id="iconPreview" class="@Model.Icon text-3xl"></i>
+                    <span class="text-sm text-gray-500">Seçilen ikonun önizlemesi</span>
+                </div>
+            </div>
+
+            <!-- Butonlar -->
+            <div class="flex gap-4 border-t pt-6">
+                <a asp-action="Services" 
+                   class="flex-1 px-6 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors flex items-center justify-center">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Listeye Dön
+                </a>
+                <button type="submit" 
+                        class="flex-1 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+                    <i class="fas fa-save mr-2"></i>
+                    Değişiklikleri Kaydet
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        document.getElementById('Icon').addEventListener('input', function() {
+            const iconPreview = document.getElementById('iconPreview');
+            iconPreview.className = this.value + ' text-3xl';
+        });
+    </script>
+}

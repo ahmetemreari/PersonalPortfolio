@@ -1,0 +1,111 @@
+@model IEnumerable<PersonalPortfolio.Models.SocialMedia>
+@{
+    ViewData["Title"] = "Sosyal Medya Yönetimi";
+    Layout = "_AdminLayout";
+}
+
+<div class="w-full">
+    <!-- Başlık ve Buton Alanı -->
+    <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center gap-3">
+            <div class="bg-primary/10 p-3 rounded-lg">
+                <i class="fas fa-share-alt text-primary text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold">Sosyal Medya Hesapları</h2>
+                <p class="text-gray-500 text-sm">Sosyal medya hesaplarınızı buradan yönetin</p>
+            </div>
+        </div>
+        <a asp-action="CreateSocialMedia" class="btn btn-primary gap-2">
+            <i class="fas fa-plus"></i>
+            Yeni Hesap Ekle
+        </a>
+    </div>
+
+    <!-- Ana Kart -->
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <div class="overflow-x-auto">
+                <table class="table table-zebra w-full">
+                    <!-- Başlık -->
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>URL</th>
+                            <th>İkon</th>
+                            <th>Durum</th>
+                            <th class="text-right">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <!-- İçerik -->
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="hover">
+                                <td class="font-medium">
+                                    <div class="flex items-center gap-3">
+                                        <i class="@item.Icon text-lg"></i>
+                                        @item.Platform
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="@item.Url" target="_blank" class="link link-primary">
+                                        @item.Url
+                                    </a>
+                                </td>
+                                <td>
+                                    <code class="bg-base-200 px-2 py-1 rounded">@item.Icon</code>
+                                </td>
+                                <td>
+                                    @if (item.IsActive)
+                                    {
+                                        <div class="badge badge-success gap-2">
+                                            <i class="fas fa-check text-xs"></i> Aktif
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="badge badge-error gap-2">
+                                            <i class="fas fa-times text-xs"></i> Pasif
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="flex justify-end gap-2">
+                                        <a asp-action="EditSocialMedia" asp-route-id="@item.Id" 
+                                           class="btn btn-warning btn-sm gap-2">
+                                            <i class="fas fa-edit"></i>
+                                            Düzenle
+                                        </a>
+                                        <a asp-action="DeleteSocialMedia" asp-route-id="@item.Id" 
+                                           class="btn btn-error btn-sm gap-2">
+                                            <i class="fas fa-trash"></i>
+                                            Sil
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                @if (!Model.Any())
+                {
+                    <div class="text-center py-8">
+                        <div class="bg-base-200 inline-flex p-4 rounded-full mb-3">
+                            <i class="fas fa-info-circle text-2xl text-base-content/50"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Henüz Sosyal Medya Hesabı Eklenmemiş</h3>
+                        <p class="text-base-content/60 mb-4">
+                            Sosyal medya hesaplarınızı ekleyerek ziyaretçilerinizle bağlantıda kalın
+                        </p>
+                        <a asp-action="CreateSocialMedia" class="btn btn-primary gap-2">
+                            <i class="fas fa-plus"></i>
+                            İlk Hesabı Ekle
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

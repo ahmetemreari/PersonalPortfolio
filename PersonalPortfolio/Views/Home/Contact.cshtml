@@ -1,0 +1,115 @@
+@model PersonalPortfolio.Models.Contact
+
+@{
+    ViewData["Title"] = "İletişim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="py-24 bg-base-200">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-primary mb-4">İletişim</h1>
+                <p class="text-base-content/70 max-w-2xl mx-auto">Projeleriniz için benimle iletişime geçebilirsiniz</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- İletişim Bilgileri -->
+                <div class="space-y-6">
+                    @if (!string.IsNullOrEmpty(ViewBag.SiteSettings?.PortfolioEmail))
+                    {
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">E-posta</h3>
+                                <a href="mailto:@ViewBag.SiteSettings.PortfolioEmail" 
+                                   class="text-base-content/70 hover:text-primary">
+                                    @ViewBag.SiteSettings.PortfolioEmail
+                                </a>
+                            </div>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(ViewBag.SiteSettings?.PortfolioPhone))
+                    {
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Telefon</h3>
+                                <a href="tel:@ViewBag.SiteSettings.PortfolioPhone" 
+                                   class="text-base-content/70 hover:text-primary">
+                                    @ViewBag.SiteSettings.PortfolioPhone
+                                </a>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- Sosyal Medya -->
+                    <div class="mt-8">
+                        <h3 class="font-bold mb-4">Sosyal Medya</h3>
+                        <div class="flex gap-4">
+                            @if (!string.IsNullOrEmpty(ViewBag.SiteSettings?.LinkedInUrl))
+                            {
+                                <a href="@ViewBag.SiteSettings?.LinkedInUrl" class="btn btn-circle btn-primary">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(ViewBag.SiteSettings?.GithubUrl))
+                            {
+                                <a href="@ViewBag.SiteSettings?.GithubUrl" class="btn btn-circle btn-primary">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İletişim Formu -->
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        @if (TempData["Message"] != null)
+                        {
+                            <div class="alert alert-success mb-4">
+                                @TempData["Message"]
+                            </div>
+                        }
+
+                        <form asp-action="Contact" method="post">
+                            <div class="form-control">
+                                <label class="label">Ad Soyad</label>
+                                <input asp-for="Name" class="input input-bordered" />
+                                <span asp-validation-for="Name" class="text-error text-sm"></span>
+                            </div>
+
+                            <div class="form-control mt-4">
+                                <label class="label">E-posta</label>
+                                <input asp-for="Email" class="input input-bordered" />
+                                <span asp-validation-for="Email" class="text-error text-sm"></span>
+                            </div>
+
+                            <div class="form-control mt-4">
+                                <label class="label">Konu</label>
+                                <input asp-for="Subject" class="input input-bordered" />
+                                <span asp-validation-for="Subject" class="text-error text-sm"></span>
+                            </div>
+
+                            <div class="form-control mt-4">
+                                <label class="label">Mesaj</label>
+                                <textarea asp-for="Message" class="textarea textarea-bordered h-32"></textarea>
+                                <span asp-validation-for="Message" class="text-error text-sm"></span>
+                            </div>
+
+                            <div class="form-control mt-6">
+                                <button type="submit" class="btn btn-primary">Gönder</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

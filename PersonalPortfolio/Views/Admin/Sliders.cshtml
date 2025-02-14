@@ -1,0 +1,161 @@
+@model IEnumerable<PersonalPortfolio.Models.Sliders>
+@{
+    ViewData["Title"] = "Slider Yönetimi";
+    Layout = "_AdminLayout";
+}
+
+<div class="max-w-7xl mx-auto p-4">
+    <!-- Başlık ve Buton Alanı -->
+    <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center gap-3">
+            <div class="bg-primary/10 p-3 rounded-lg">
+                <i class="fas fa-images text-primary text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold">Slider Yönetimi</h2>
+                <p class="text-gray-500 text-sm">Toplam @Model.Count() slider bulunmaktadır</p>
+            </div>
+        </div>
+        <a asp-action="CreateSlider" class="btn btn-primary gap-2">
+            <i class="fas fa-plus"></i>
+            Yeni Slider
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success mb-6">
+            <i class="fas fa-check-circle"></i>
+            <span>@TempData["Success"]</span>
+        </div>
+    }
+
+    <!-- Slider Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @foreach (var slider in Model)
+        {
+            <div class="card bg-base-100 shadow-xl group">
+                <!-- Resim Alanı -->
+                <figure class="relative h-48 overflow-hidden">
+                    <img src="@slider.SliderUrl" 
+                         alt="Slider" 
+                         class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <div class="flex gap-2">
+                            <a asp-action="EditSlider" asp-route-id="@slider.Id" 
+                               class="btn btn-warning btn-sm">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <button onclick="confirmDelete(@slider.Id)" 
+                                    class="btn btn-error btn-sm">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </figure>
+
+                <!-- Alt Bilgi -->
+                <div class="card-body">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="font-semibold">Slider #@slider.Id</h3>
+                                @if (slider.IsActive)
+                                {
+                                    <span class="badge badge-success badge-sm">Aktif</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-ghost badge-sm">Pasif</span>
+                                }
+                            </div>
+                            <p class="text-sm text-gray-500 truncate max-w-[200px]">
+                                @slider.SliderUrl
+                            </p>
+                        </div>
+                        <div class="dropdown dropdown-end">
+                            <label tabindex="0" class="btn btn-ghost btn-sm btn-circle">
+                                <i class="fas fa-ellipsis-vertical"></i>
+                            </label>
+                            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                <li>
+                                    <a asp-action="EditSlider" asp-route-id="@slider.Id">
+                                        <i class="fas fa-edit"></i>Düzenle
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" onclick="confirmDelete(@slider.Id)" class="text-error">
+                                        <i class="fas fa-trash"></i>Sil
+                                    </a>
+                                </li>
+                                <li>
+                                    <form asp-action="ToggleActive" asp-route-id="@slider.Id" method="post" class="w-full">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="w-full flex items-center px-4 py-2 hover:bg-base-200">
+                                            <i class="fas @(slider.IsActive ? "fa-eye-slash" : "fa-eye") mr-2"></i>
+                                            @(slider.IsActive ? "Pasife Al" : "Aktife Al")
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-16">
+            <div class="bg-base-200 inline-flex p-6 rounded-full mb-4">
+                <i class="fas fa-image text-5xl text-base-content/40"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Henüz Slider Eklenmemiş</h3>
+            <p class="text-base-content/60 max-w-md mx-auto mb-6">
+                Web sitenize görsel zenginlik katmak için slider ekleyebilirsiniz.
+            </p>
+            <a asp-action="CreateSlider" class="btn btn-primary btn-lg gap-2">
+                <i class="fas fa-plus"></i>
+                İlk Slider'ı Ekle
+            </a>
+        </div>
+    }
+</div>
+
+<!-- Silme Onay Modalı -->
+<dialog id="deleteModal" class="modal">
+    <div class="modal-box">
+        <h3 class="font-bold text-lg mb-2">Slider'ı Sil</h3>
+        <p class="py-4 text-base-content/70">Bu slider'ı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.</p>
+        <div class="modal-action">
+            <form asp-action="DeleteSlider" method="post" class="flex gap-2">
+                @Html.AntiForgeryToken()
+                <input type="hidden" id="sliderIdToDelete" name="id" value="" />
+                <button type="button" class="btn btn-ghost" onclick="closeModal()">İptal</button>
+                <button type="submit" class="btn btn-error gap-2">
+                    <i class="fas fa-trash"></i>
+                    Sil
+                </button>
+            </form>
+        </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>İptal</button>
+    </form>
+</dialog>
+
+@section Scripts {
+    <script>
+        function confirmDelete(id) {
+            const modal = document.getElementById('deleteModal');
+            document.getElementById('sliderIdToDelete').value = id;
+            modal.showModal();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('deleteModal');
+            modal.close();
+        }
+    </script>
+}

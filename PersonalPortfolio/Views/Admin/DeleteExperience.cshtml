@@ -1,0 +1,52 @@
+@model PersonalPortfolio.Models.Experience
+
+@{
+    ViewData["Title"] = "Deneyim Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Deneyim Silme Onayı</h6>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Dikkat!</h4>
+                <p>Aşağıdaki deneyim kaydını silmek üzeresiniz. Bu işlem geri alınamaz.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">Şirket Adı</dt>
+                        <dd class="col-sm-8">@Model.CompanyName</dd>
+
+                        <dt class="col-sm-4">Pozisyon</dt>
+                        <dd class="col-sm-8">@Model.JobTitle</dd>
+
+                        <dt class="col-sm-4">Başlangıç Tarihi</dt>
+                        <dd class="col-sm-8">@Model.JobStartDate.ToString("dd/MM/yyyy")</dd>
+
+                        <dt class="col-sm-4">Bitiş Tarihi</dt>
+                        <dd class="col-sm-8">@Model.JobEndDate.ToString("dd/MM/yyyy")</dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    @if (!string.IsNullOrEmpty(Model.JobImageUrl))
+                    {
+                        <img src="@Model.JobImageUrl" alt="@Model.CompanyName" class="img-fluid" />
+                    }
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <form asp-action="DeleteExperience">
+                    <input type="hidden" asp-for="Id" />
+                    <a asp-action="Experiences" class="btn btn-secondary">İptal</a>
+                    <input type="submit" value="Sil" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

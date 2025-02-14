@@ -1,0 +1,139 @@
+@model IEnumerable<Service>
+@{
+    ViewData["Title"] = "Hizmet Yönetimi";
+    Layout = "_AdminLayout";
+}
+
+<div class="max-w-7xl mx-auto">
+    <!-- Başlık Alanı -->
+    <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center gap-3">
+            <div class="bg-primary/10 p-3 rounded-lg">
+                <i class="fas fa-cogs text-primary text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold">Hizmet Yönetimi</h2>
+                <p class="text-gray-500 text-sm">Toplam @Model.Count() hizmet bulunmaktadır</p>
+            </div>
+        </div>
+        <a asp-action="CreateService" class="btn btn-primary gap-2">
+            <i class="fas fa-plus"></i>
+            Yeni Hizmet Ekle
+        </a>
+    </div>
+
+    <!-- Hizmet Kartları -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @foreach (var service in Model)
+        {
+            <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div class="card-body">
+                    <!-- Başlık ve Durum -->
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="card-title flex items-center gap-2">
+                            @if (!string.IsNullOrEmpty(service.Icon))
+                            {
+                                <i class="@service.Icon"></i>
+                            }
+                            @service.Name
+                        </h3>
+                        @if (service.IsActive)
+                        {
+                            <div class="badge badge-success gap-1">
+                                <i class="fas fa-check text-xs"></i>
+                                Aktif
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="badge badge-error gap-1">
+                                <i class="fas fa-times text-xs"></i>
+                                Pasif
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Fiyat -->
+                    <div class="text-2xl font-bold text-primary mb-2">
+                        @service.Price.ToString("C")
+                    </div>
+
+                    <!-- Açıklama -->
+                    <p class="text-gray-600 flex-grow mb-4">
+                        @(service.Description?.Length > 100 
+                            ? service.Description.Substring(0, 100) + "..." 
+                            : service.Description)
+                    </p>
+
+                    <!-- Tarih -->
+                    <div class="text-sm text-gray-500 mb-4">
+                        Oluşturulma: @service.CreatedDate.ToString("dd.MM.yyyy")
+                    </div>
+
+                    <!-- Butonlar -->
+                    <div class="card-actions justify-end">
+                        <div class="flex gap-2">
+                            <a asp-action="EditService" asp-route-id="@service.Id" 
+                               class="btn btn-warning btn-sm gap-2">
+                                <i class="fas fa-edit"></i>
+                                Düzenle
+                            </a>
+                            <button onclick="confirmDelete(@service.Id)" 
+                                    class="btn btn-error btn-sm gap-2">
+                                <i class="fas fa-trash"></i>
+                                Sil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Any())
+    {
+        <!-- Boş Durum -->
+        <div class="text-center py-12">
+            <div class="bg-base-200 inline-flex p-4 rounded-full mb-4">
+                <i class="fas fa-folder-open text-4xl text-base-content/50"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Henüz Hizmet Eklenmemiş</h3>
+            <p class="text-gray-500 mb-4">
+                Hizmetlerinizi ekleyerek müşterilerinize sunmaya başlayın
+            </p>
+            <a asp-action="CreateService" class="btn btn-primary gap-2">
+                <i class="fas fa-plus"></i>
+                İlk Hizmeti Ekle
+            </a>
+        </div>
+    }
+</div>
+
+<!-- Silme Onay Modalı -->
+<dialog id="deleteModal" class="modal">
+    <form method="dialog" class="modal-box">
+        <h3 class="font-bold text-lg mb-4">Hizmeti Sil</h3>
+        <p>Bu hizmeti silmek istediğinize emin misiniz?</p>
+        <div class="modal-action">
+            <button class="btn btn-ghost">İptal</button>
+            <form asp-action="DeleteService" id="deleteForm" method="post" class="inline">
+                <input type="hidden" id="serviceIdToDelete" name="id" value="" />
+                <button type="submit" class="btn btn-error">
+                    <i class="fas fa-trash mr-2"></i>
+                    Sil
+                </button>
+            </form>
+        </div>
+    </form>
+</dialog>
+
+@section Scripts {
+    <script>
+        function confirmDelete(id) {
+            const modal = document.getElementById('deleteModal');
+            const serviceIdInput = document.getElementById('serviceIdToDelete');
+            serviceIdInput.value = id;
+            modal.showModal();
+        }
+    </script>
+}

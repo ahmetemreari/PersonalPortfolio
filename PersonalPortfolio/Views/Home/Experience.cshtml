@@ -1,0 +1,33 @@
+@model IEnumerable<PersonalPortfolio.Models.Service>
+
+@{
+    ViewData["Title"] = "Hizmetler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="py-24 bg-base-100">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-primary mb-4">Hizmetlerim</h1>
+            <p class="text-base-content/70 max-w-2xl mx-auto">Size sunduğum profesyonel hizmetler</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach (var service in Model)
+            {
+                <div class="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <div class="card-body">
+                        <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                            <i class="@service.Icon text-2xl text-primary"></i>
+                        </div>
+                        <h2 class="card-title">@service.Name</h2>
+                        <p class="text-base-content/70">@service.Description</p>
+                        <div class="mt-4">
+                            <span class="text-xl font-bold text-primary">@service.Price.ToString("C0")</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

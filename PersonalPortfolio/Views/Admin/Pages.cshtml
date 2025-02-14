@@ -1,0 +1,54 @@
+@model IEnumerable<PersonalPortfolio.Models.Pages>
+
+@{
+    ViewData["Title"] = "Sayfa Yönetimi";
+    Layout = "_AdminLayout"; // Eğer admin için özel layout kullanıyorsan, buraya yaz!
+}
+
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Sayfa Yönetimi</h1>
+
+    <div class="mb-4">
+        <a asp-action="CreatePage" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Yeni Sayfa Ekle
+        </a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Başlık</th>
+                <th>Slug</th>
+                <th>Durum</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pages in Model)
+            {
+                <tr>
+                    <td>@pages.PageTitle</td>
+                    <td>@pages.PageSlug</td>
+                    <td>
+                        @if (pages.IsActive)
+                        {
+                            <span class="badge badge-success">Aktif</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-danger">Pasif</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="EditPage" asp-route-id="@pages.Id" class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i> Düzenle
+                        </a>
+                        <a asp-action="DeletePage" asp-route-id="@pages.Id" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i> Sil
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

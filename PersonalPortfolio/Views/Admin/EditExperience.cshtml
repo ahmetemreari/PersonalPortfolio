@@ -1,0 +1,87 @@
+@model PersonalPortfolio.Models.Experience
+
+@{
+    ViewData["Title"] = "Deneyim Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mx-auto px-4 py-8">
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-edit mr-2"></i>Deneyim Düzenle
+            </h2>
+
+            <form asp-action="EditExperience" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-error"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="form-control">
+                        <label asp-for="CompanyName" class="label">Şirket Adı</label>
+                        <input asp-for="CompanyName" class="input input-bordered w-full" />
+                        <span asp-validation-for="CompanyName" class="text-error text-sm"></span>
+                    </div>
+
+                    <div class="form-control">
+                        <label asp-for="JobTitle" class="label">Pozisyon</label>
+                        <input asp-for="JobTitle" class="input input-bordered w-full" />
+                        <span asp-validation-for="JobTitle" class="text-error text-sm"></span>
+                    </div>
+                </div>
+
+                <div class="form-control mt-4">
+                    <label asp-for="JobDescription" class="label">İş Tanımı</label>
+                    <textarea asp-for="JobDescription" class="textarea textarea-bordered h-32"></textarea>
+                    <span asp-validation-for="JobDescription" class="text-error text-sm"></span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                    <div class="form-control">
+                        <label asp-for="JobStartDate" class="label">Başlangıç Tarihi</label>
+                        <input asp-for="JobStartDate" class="input input-bordered" type="date" />
+                        <span asp-validation-for="JobStartDate" class="text-error text-sm"></span>
+                    </div>
+
+                    <div class="form-control">
+                        <label asp-for="JobEndDate" class="label">Bitiş Tarihi</label>
+                        <input asp-for="JobEndDate" class="input input-bordered" type="date" />
+                        <span asp-validation-for="JobEndDate" class="text-error text-sm"></span>
+                    </div>
+                </div>
+
+                <div class="form-control mt-4">
+                    <label asp-for="JobImageUrl" class="label">Görsel URL</label>
+                    <input asp-for="JobImageUrl" class="input input-bordered w-full" />
+                    <span asp-validation-for="JobImageUrl" class="text-error text-sm"></span>
+                    @if (!string.IsNullOrEmpty(Model.JobImageUrl))
+                    {
+                        <div class="mt-2">
+                            <img src="@Model.JobImageUrl" alt="@Model.CompanyName" class="max-w-xs rounded-lg shadow-lg" />
+                        </div>
+                    }
+                </div>
+
+                <div class="form-control mt-4">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Aktif</span>
+                        <input type="checkbox" asp-for="IsActive" class="toggle toggle-primary" />
+                    </label>
+                </div>
+
+                <div class="flex justify-between items-center mt-6">
+                    <a asp-action="Experiences" class="btn btn-ghost">
+                        <i class="fas fa-arrow-left mr-2"></i>Geri Dön
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save mr-2"></i>Değişiklikleri Kaydet
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

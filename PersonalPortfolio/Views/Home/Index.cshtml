@@ -1,0 +1,301 @@
+﻿<!-- Hero Slider -->
+<div class="relative h-screen overflow-hidden">
+    <div class="swiper mainSlider h-full w-full">
+        <div class="swiper-wrapper">
+            @if (ViewBag.Sliders != null)
+            {
+                foreach (var slider in ViewBag.Sliders)
+                {
+                    <div class="swiper-slide relative w-full h-full">
+                        <!-- Arkaplan Resmi -->
+                        <img src="@slider.SliderUrl" 
+                             alt="@slider.SliderTitle"
+                             class="absolute top-0 left-0 w-full h-full object-cover scale-image" />
+                        
+                        <!-- Overlay Gradient -->
+                        <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%)"></div>
+
+                        <!-- Slider İçeriği -->
+                        <div class="relative z-20 h-full container mx-auto px-4">
+                            <div class="flex flex-col justify-center h-full">
+                                <div class="max-w-3xl" data-swiper-parallax="-300">
+                                    @if (!string.IsNullOrEmpty(slider.SliderTitle))
+                                    {
+                                        <h1 class="slide-title text-7xl font-bold text-white mb-6">
+                                            @slider.SliderTitle
+                                        </h1>
+                                    }
+                                    
+                                    @if (!string.IsNullOrEmpty(slider.SliderDescription))
+                                    {
+                                        <p class="slide-desc text-xl text-white/90 mb-8 max-w-xl">
+                                            @slider.SliderDescription
+                                        </p>
+                                    }
+                                    
+                                    @if (!string.IsNullOrEmpty(slider.SliderButtonText))
+                                    {
+                                        <div class="slide-btn">
+                                            <a href="@slider.SliderButtonUrl" class="btn btn-primary px-8 py-3 text-lg">
+                                                @slider.SliderButtonText
+                                                <i class="fas fa-arrow-right ml-2"></i>
+                                            </a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <!-- Custom Pagination -->
+        <div class="absolute z-30 bottom-12 right-12">
+            <div class="swiper-pagination !inline-flex gap-2"></div>
+        </div>
+
+        <!-- Custom Navigation -->
+        <div class="absolute z-30 flex gap-4 bottom-12 left-12">
+            <button class="swiper-prev-btn p-3 rounded-full bg-black/20 hover:bg-primary transition-all duration-300 text-white/80 hover:text-white">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <button class="swiper-next-btn p-3 rounded-full bg-black/20 hover:bg-primary transition-all duration-300 text-white/80 hover:text-white">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Script for Swiper -->
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.mainSlider', {
+            loop: true,
+            parallax: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-next-btn',
+                prevEl: '.swiper-prev-btn',
+            },
+        });
+    </script>
+}
+
+<!-- Hakkımda Section -->
+<section class="py-16 bg-base-200">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h2 class="text-4xl font-bold">@ViewBag.About?.Title</h2>
+                <p class="text-base-content/70 leading-relaxed">@ViewBag.About?.Description</p>
+                @if (!string.IsNullOrEmpty(ViewBag.SiteSettings?.CvUrl))
+                {
+                    <a href="@ViewBag.SiteSettings.CvUrl" class="btn btn-primary">
+                        <i class="fas fa-download mr-2"></i>
+                        CV'mi İndir
+                    </a>
+                }
+            </div>
+            @if (!string.IsNullOrEmpty(ViewBag.About?.ImageUrl))
+            {
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-primary/10 rounded-2xl"></div>
+                    <img src="@ViewBag.About?.ImageUrl" alt="@ViewBag.About?.Title" class="relative rounded-xl w-full">
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Hizmetler Section -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4">Hizmetlerim</h2>
+            <p class="text-base-content/70 max-w-2xl mx-auto">Size sunduğum profesyonel hizmetler</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @if (ViewBag.Services != null)
+            {
+                foreach (var service in ViewBag.Services)
+                {
+                    <div class="card bg-base-100 hover:shadow-xl transition-shadow duration-300">
+                        <div class="card-body">
+                            <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                                <i class="@service.Icon text-2xl text-primary"></i>
+                            </div>
+                            <h3 class="card-title">@service.Name</h3>
+                            <p class="text-base-content/70">@service.Description</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Projeler Section -->
+<section class="py-16 bg-base-200">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4">Projelerim</h2>
+            <p class="text-base-content/70 max-w-2xl mx-auto">Tamamladığım bazı projeler</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @if (ViewBag.Projects != null)
+            {
+                foreach (var project in ViewBag.Projects)
+                {
+                    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <figure class="px-4 pt-4">
+                            <img src="@project.ProjectImageUrl" alt="@project.ProjectTitle" class="rounded-xl h-48 w-full object-cover">
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">@project.ProjectTitle</h3>
+                            <p class="text-base-content/70">@project.ProjectDescription</p>
+                            <div class="card-actions justify-end mt-4">
+                                @if (!string.IsNullOrEmpty(project.ProjectGithubUrl))
+                                {
+                                    <a href="@project.ProjectGithubUrl" class="btn btn-ghost btn-sm">
+                                        <i class="fab fa-github mr-2"></i> GitHub
+                                    </a>
+                                }
+                                @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                                {
+                                    <a href="@project.ProjectUrl" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-external-link-alt mr-2"></i> Demo
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Deneyim Section -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4">Deneyimlerim</h2>
+            <p class="text-base-content/70 max-w-2xl mx-auto">Profesyonel iş deneyimlerim</p>
+        </div>
+        
+        <div class="space-y-8">
+            @if (ViewBag.Experiences != null)
+            {
+                foreach (var exp in ViewBag.Experiences)
+                {
+                    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="card-body">
+                            <div class="flex items-start gap-6">
+                                @if (!string.IsNullOrEmpty(exp.JobImageUrl))
+                                {
+                                    <img src="@exp.JobImageUrl" alt="@exp.CompanyName" class="w-16 h-16 rounded-lg object-cover">
+                                }
+                                <div>
+                                    <h3 class="text-xl font-bold">@exp.JobTitle</h3>
+                                    <p class="text-primary font-medium">@exp.CompanyName</p>
+                                    <p class="text-sm text-base-content/70 mt-1">
+                                        @exp.JobStartDate.ToString("MMM yyyy") - @(exp.JobEndDate?.ToString("MMM yyyy") ?? "Devam Ediyor")
+                                    </p>
+                                    <p class="mt-4 text-base-content/70">@exp.JobDescription</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- İletişim Section -->
+<section class="py-16 bg-base-200">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4">İletişime Geçin</h2>
+            <p class="text-base-content/70 max-w-2xl mx-auto">Projeleriniz için benimle iletişime geçebilirsiniz</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-envelope text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">Email</h3>
+                        <p class="text-base-content/70">@ViewBag.SiteSettings?.PortfolioEmail</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-phone text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">Telefon</h3>
+                        <p class="text-base-content/70">@ViewBag.SiteSettings?.PortfolioPhone</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 mt-8">
+                    @if (!string.IsNullOrEmpty(ViewBag.SiteSettings?.LinkedInUrl))
+                    {
+                        <a href="@ViewBag.SiteSettings?.LinkedInUrl" class="btn btn-primary btn-circle">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(ViewBag.SiteSettings?.GithubUrl))
+                    {
+                        <a href="@ViewBag.SiteSettings?.GithubUrl" class="btn btn-primary btn-circle">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    }
+                </div>
+            </div>
+
+            <form asp-controller="Home" asp-action="Contact" method="post" class="card bg-base-100 shadow-lg">
+                <div class="card-body">
+                    <div class="form-control">
+                        <label class="label">Ad Soyad</label>
+                        <input type="text" name="Name" class="input input-bordered" required>
+                    </div>
+                    
+                    <div class="form-control">
+                        <label class="label">Email</label>
+                        <input type="email" name="Email" class="input input-bordered" required>
+                    </div>
+                    
+                    <div class="form-control">
+                        <label class="label">Konu</label>
+                        <input type="text" name="Subject" class="input input-bordered" required>
+                    </div>
+                    
+                    <div class="form-control">
+                        <label class="label">Mesaj</label>
+                        <textarea name="Message" class="textarea textarea-bordered h-32" required></textarea>
+                    </div>
+                    
+                    <div class="form-control mt-6">
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

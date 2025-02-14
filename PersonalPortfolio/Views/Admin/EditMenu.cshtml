@@ -1,0 +1,144 @@
+@model PersonalPortfolio.Models.Menus
+
+@{
+    ViewData["Title"] = "Menü Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mx-auto px-4 py-8">
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-primary">
+                <i class="fas fa-edit mr-2"></i>Menü Düzenle
+            </h2>
+
+            <form asp-action="EditMenu" method="post" class="space-y-6">
+                <div asp-validation-summary="ModelOnly" class="alert alert-error"></div>
+                
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-control">
+                    <label asp-for="MenuTitle" class="label">
+                        <span class="label-text">Menü Başlığı</span>
+                    </label>
+                    <input asp-for="MenuTitle" class="input input-bordered w-full" placeholder="Menü başlığını girin" />
+                    <span asp-validation-for="MenuTitle" class="text-error"></span>
+                </div>
+
+                <div class="form-control">
+                    <label asp-for="MenuLink" class="label">
+                        <span class="label-text">Menü Linki</span>
+                    </label>
+                    <input asp-for="MenuLink" class="input input-bordered w-full" placeholder="/Home/About gibi" />
+                    <span asp-validation-for="MenuLink" class="text-error"></span>
+                </div>
+
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">İkon Seçimi</span>
+                    </label>
+                    
+                    <div class="card bg-base-200 p-4">
+                        <div class="flex items-center gap-4">
+                            <div class="flex-grow">
+                                <input 
+                                    type="text" 
+                                    id="icon-input" 
+                                    class="input input-bordered w-full" 
+                                    placeholder="Font Awesome ikonunu girin (örn: fas fa-home)"
+                                    value="@Model.MenuIcon" 
+                                />
+                            </div>
+                            <button type="button" id="preview-icon-btn" class="btn btn-primary">
+                                Önizle
+                            </button>
+                        </div>
+
+                        <div class="mt-4 flex items-center gap-4">
+                            <div class="avatar placeholder">
+                                <div class="bg-neutral-focus text-neutral-content rounded-full w-12 h-12 flex items-center justify-center">
+                                    <i id="selected-icon" class="@Model.MenuIcon text-2xl"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-bold" id="icon-text">@Model.MenuIcon.Split('-').Last()</p>
+                            </div>
+                        </div>
+
+                        <div id="icon-error" class="text-error mt-2 hidden">
+                            Geçersiz ikon formatı. Lütfen 'fas fa-...' formatında girin.
+                        </div>
+
+                        <div class="mt-4">
+                            <p class="text-sm text-base-content/70">
+                                💡 Font Awesome ikonları için 
+                                <a href="https://fontawesome.com/icons?d=gallery&p=2&m=free" 
+                                   target="_blank" 
+                                   class="link link-primary">
+                                    ücretsiz ikonları inceleyebilirsiniz
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <input type="hidden" asp-for="MenuIcon" id="MenuIcon" />
+                </div>
+
+                <div class="form-control">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Menüyü Aktif Et</span>
+                        <input type="checkbox" asp-for="IsActive" class="toggle toggle-primary" />
+                    </label>
+                </div>
+
+                <div class="form-control mt-6">
+                    <div class="flex justify-between">
+                        <a asp-action="Menus" class="btn btn-ghost">
+                            <i class="fas fa-arrow-left mr-2"></i>Geri Dön
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save mr-2"></i>Güncelle
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const iconInput = document.getElementById('icon-input');
+            const previewIconBtn = document.getElementById('preview-icon-btn');
+            const selectedIconElement = document.getElementById('selected-icon');
+            const iconTextElement = document.getElementById('icon-text');
+            const hiddenIconInput = document.getElementById('MenuIcon');
+            const iconError = document.getElementById('icon-error');
+
+            // Font Awesome ikon formatını kontrol eden regex
+            const iconRegex = /^(fas|far|fal|fad|fab)\s+fa-[\w-]+$/;
+
+            previewIconBtn.addEventListener('click', function() {
+                const iconValue = iconInput.value.trim();
+
+                // İkon formatını kontrol et
+                if (iconRegex.test(iconValue)) {
+                    // İkonu güncelle
+                    selectedIconElement.className = iconValue + ' text-2xl';
+                    iconTextElement.textContent = iconValue.split('-').pop();
+                    
+                    // Hidden input'a değeri ata
+                    hiddenIconInput.value = iconValue;
+
+                    // Hata mesajını gizle
+                    iconError.classList.add('hidden');
+                } else {
+                    // Hata mesajını göster
+                    iconError.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+}
